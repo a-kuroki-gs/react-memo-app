@@ -25,12 +25,36 @@ export default function App() {
     setMemos([...memos, newMemo]);
   }
 
+  function handleEditMemo(newMemo) {
+    setMemos(
+      memos.map((memo) => {
+        if (memo.id === newMemo.id) {
+          return newMemo;
+        } else {
+          return memo;
+        }
+      })
+    );
+  }
+
+  function handleDeleteMemo(memoId) {
+    setMemos(memos.filter(memo =>
+      memo.id !== memoId
+    ));
+  }
+
   return (
     <div>
       <h1>メモアプリ</h1>
       <MemoList memos={memos} onMemoClick={handleMemoClick} />
       <button onClick={handleNewMemo}>+</button>
-      {selectedMemo && <MemoDetail memo={selectedMemo} />}
+      {selectedMemo &&
+      <MemoDetail
+        memo={selectedMemo}
+        onEditClick={() => handleEditMemo(selectedMemo)}
+        onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
+      />
+      }
     </div>
   );
 }
