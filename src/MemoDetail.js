@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
-  const [text, setText] = useState(memo.title + '\n' + memo.content);
+  const [text, setText] = useState(memo.text);
 
   return (
     <div>

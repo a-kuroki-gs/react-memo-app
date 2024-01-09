@@ -3,11 +3,9 @@ import MemoList from './MemoList';
 import MemoDetail from './MemoDetail';
 
 export default function App() {
-  // const [memos, setMemos] = useState('');
   const [memos, setMemos] = useState([
-    { id: 1, title: 'Memo 1', content: 'This is the first memo.' },
-    { id: 2, title: 'Memo 2', content: 'This is the second memo.' },
-    // 他のメモ...
+    { id: 1, text: 'Memo 1 \n This is the first memo.' },
+    { id: 2, text: 'Memo 2 \n This is the second memo.' },
   ]);
   const [selectedMemo, setSelectedMemo] = useState(null);
 
@@ -18,8 +16,7 @@ export default function App() {
   function handleNewMemo() {
     const newMemo = {
       id: memos.length + 1,
-      title: 'title',
-      content: 'content',
+      text: '新規メモ'
     };
 
     setMemos([...memos, newMemo]);

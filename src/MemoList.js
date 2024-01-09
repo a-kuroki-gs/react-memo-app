@@ -7,7 +7,7 @@ export default function MemoList({ memos, onMemoClick }) {
       <ul>
         {memos.map((memo) => (
           <li key={memo.id} onClick={() => onMemoClick(memo)}>
-            {memo.title}
+            {memo.text.split(/\n/)[0]}
           </li>
         ))}
       </ul>
