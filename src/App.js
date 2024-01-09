@@ -4,10 +4,7 @@ import MemoDetail from './MemoDetail';
 import './App.css';
 
 export default function App() {
-  const [memos, setMemos] = useState([
-    { id: 1, text: 'Memo 1 \n This is the first memo.' },
-    { id: 2, text: 'Memo 2 \n This is the second memo.' },
-  ]);
+  const [memos, setMemos] = useState([]);
   const [selectedMemo, setSelectedMemo] = useState(null);
 
   function handleMemoClick(memo) {
