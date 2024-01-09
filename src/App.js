@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MemoList from './MemoList';
 import MemoDetail from './MemoDetail';
+import './App.css';
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -44,17 +45,23 @@ export default function App() {
 
   return (
     <div>
-      <h1>メモアプリ</h1>
-      <MemoList memos={memos} onMemoClick={handleMemoClick} />
-      <button onClick={handleNewMemo}>+</button>
-      {selectedMemo &&
-      <MemoDetail
-        memo={selectedMemo}
-        onEditClick={handleEditMemo}
-        onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
-      />
-      }
+    <h1>メモアプリ</h1>
+    <div className="container">
+      <div className="memo-list">
+        <MemoList memos={memos} onMemoClick={handleMemoClick} />
+        <button className="plus-button" onClick={handleNewMemo}>+</button>
+      </div>
+      <div className="memo-detail">
+        {selectedMemo && (
+          <MemoDetail
+            memo={selectedMemo}
+            onEditClick={handleEditMemo}
+            onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
+          />
+        )}
+      </div>
     </div>
+  </div>
   );
 }
 

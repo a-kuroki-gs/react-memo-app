@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  display: flex;
+}
+
+.memo-list,
+.memo-detail {
+  margin: 10px 20px
+}
+
+.plus-button {
+  width: 50px;
+  margin: 0 50px;
+}

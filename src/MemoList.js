@@ -1,4 +1,5 @@
 import React from 'react';
+import './MemoList.css';
 
 export default function MemoList({ memos, onMemoClick }) {
   return (
@@ -6,7 +7,7 @@ export default function MemoList({ memos, onMemoClick }) {
       <h2>一覧</h2>
       <ul>
         {memos.map((memo) => (
-          <li key={memo.id} onClick={() => onMemoClick(memo)}>
+          <li key={memo.id} className="memo-item" onClick={() => onMemoClick(memo)}>
             {memo.text.split(/\n/)[0]}
           </li>
         ))}
