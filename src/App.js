@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MemoList from "./MemoList";
 import MemoDetail from "./MemoDetail";
 import "./App.css";
 
 export default function App() {
-  const [memos, setMemos] = useState([]);
+  const [memos, setMemos] = useState(() => {
+    const storedMemos = localStorage.getItem("memos");
+    return storedMemos ? JSON.parse(storedMemos) : [];
+  });
   const [selectedMemo, setSelectedMemo] = useState(null);
+
+  function saveToLocalStorage(data) {
+    localStorage.setItem("memos", JSON.stringify(data));
+  }
+
+  useEffect(() => {
+    saveToLocalStorage(memos);
+  }, [memos]);
 
   function handleMemoClick(memo) {
     setSelectedMemo(memo);
