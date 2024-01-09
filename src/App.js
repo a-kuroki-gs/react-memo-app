@@ -47,6 +47,8 @@ export default function App() {
 
   function handleDeleteMemo(memoId) {
     setMemos(memos.filter((memo) => memo.id !== memoId));
+
+    setSelectedMemo(null);
   }
 
   return (
