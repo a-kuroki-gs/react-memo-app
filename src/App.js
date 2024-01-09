@@ -20,6 +20,7 @@ export default function App() {
     };
 
     setMemos([...memos, newMemo]);
+    setSelectedMemo(newMemo);
   }
 
   function handleEditMemo(newMemo) {
@@ -32,6 +33,7 @@ export default function App() {
         }
       })
     );
+    setSelectedMemo(newMemo);
   }
 
   function handleDeleteMemo(memoId) {
@@ -48,7 +50,7 @@ export default function App() {
       {selectedMemo &&
       <MemoDetail
         memo={selectedMemo}
-        onEditClick={() => handleEditMemo(selectedMemo)}
+        onEditClick={handleEditMemo}
         onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
       />
       }

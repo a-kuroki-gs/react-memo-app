@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
   const [text, setText] = useState(memo.text);
+
+  useEffect(() => {
+    setText(memo.text);
+  }, [memo]);
 
   return (
     <div>
@@ -12,7 +16,7 @@ export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
       >
       </textarea>
       <p></p>
-      <button onClick={onEditClick}>編集</button>
+      <button onClick={() => onEditClick({ ...memo, text })}>編集</button>
       <button onClick={onDeleteClick}>削除</button>
     </div>
   );
