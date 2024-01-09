@@ -32,17 +32,17 @@ export default function App() {
     setSelectedMemo(newMemo);
   }
 
-  function handleEditMemo(newMemo) {
+  function handleEditMemo(editedMemo) {
     setMemos(
       memos.map((memo) => {
-        if (memo.id === newMemo.id) {
-          return newMemo;
+        if (memo.id === editedMemo.id) {
+          return editedMemo;
         } else {
           return memo;
         }
       }),
     );
-    setSelectedMemo(newMemo);
+    setSelectedMemo(editedMemo);
   }
 
   function handleDeleteMemo(memoId) {
