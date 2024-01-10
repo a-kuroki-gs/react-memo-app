@@ -9,6 +9,11 @@ export default function App() {
     return storedMemos ? JSON.parse(storedMemos) : [];
   });
   const [selectedMemo, setSelectedMemo] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsLoggedIn((prevState) => !prevState);
+  };
 
   function saveToLocalStorage(data) {
     localStorage.setItem("memos", JSON.stringify(data));
@@ -54,6 +59,11 @@ export default function App() {
   return (
     <div>
       <h1>メモアプリ</h1>
+      <div>
+        <button onClick={handleLoginClick}>
+          {isLoggedIn ? "ログアウト" : "ログイン"}
+        </button>
+      </div>
       <div className="container">
         <div className="memo-list">
           <MemoList memos={memos} onMemoClick={handleMemoClick} />
