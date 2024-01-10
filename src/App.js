@@ -59,9 +59,9 @@ export default function App() {
 
   return (
     <div>
-      <h1>メモアプリ</h1>
-      <div>
-        <button onClick={handleLoginClick}>
+      <div className="header">
+        <h1>メモアプリ</h1>
+        <button className="login-button" onClick={handleLoginClick}>
           {isLoggedIn ? "ログアウト" : "ログイン"}
         </button>
       </div>
