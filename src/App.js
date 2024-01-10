@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MemoList from "./MemoList";
 import MemoDetail from "./MemoDetail";
 import "./App.css";
+import { LoginContext } from "./LoginContext";
 
 export default function App() {
   const [memos, setMemos] = useState(() => {
@@ -64,23 +65,27 @@ export default function App() {
           {isLoggedIn ? "ログアウト" : "ログイン"}
         </button>
       </div>
-      <div className="container">
-        <div className="memo-list">
-          <MemoList memos={memos} onMemoClick={handleMemoClick} />
-          <button className="plus-button" onClick={handleNewMemo}>
-            +
-          </button>
+      <LoginContext.Provider value={isLoggedIn}>
+        <div className="container">
+          <div className="memo-list">
+            <MemoList memos={memos} onMemoClick={handleMemoClick} />
+            {isLoggedIn && (
+              <button className="plus-button" onClick={handleNewMemo}>
+                +
+              </button>
+            )}
+          </div>
+          <div className="memo-detail">
+            {selectedMemo && (
+              <MemoDetail
+                memo={selectedMemo}
+                onEditClick={handleEditMemo}
+                onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
+              />
+            )}
+          </div>
         </div>
-        <div className="memo-detail">
-          {selectedMemo && (
-            <MemoDetail
-              memo={selectedMemo}
-              onEditClick={handleEditMemo}
-              onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
-            />
-          )}
-        </div>
-      </div>
+      </LoginContext.Provider>
     </div>
   );
 }
