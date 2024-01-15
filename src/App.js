@@ -10,8 +10,8 @@ export default function App() {
   });
   const [selectedMemo, setSelectedMemo] = useState(null);
 
-  function saveToLocalStorage(data) {
-    localStorage.setItem("memos", JSON.stringify(data));
+  function saveToLocalStorage(memos) {
+    localStorage.setItem("memos", JSON.stringify(memos));
   }
 
   useEffect(() => {
