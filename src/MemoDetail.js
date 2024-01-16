@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { LoginContext } from "./LoginContext";
 import "./MemoDetail.css";
 
-export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
+export default function MemoDetail({ memo, onClickEdit, onClickDelete }) {
   const [text, setText] = useState(memo.text);
   const isLoggedIn = useContext(LoginContext);
 
@@ -24,11 +24,11 @@ export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
         <div>
           <button
             className="custom-button"
-            onClick={() => onEditClick({ ...memo, text })}
+            onClick={() => onClickEdit({ ...memo, text })}
           >
             編集
           </button>
-          <button className="custom-button" onClick={onDeleteClick}>
+          <button className="custom-button" onClick={onClickDelete}>
             削除
           </button>
         </div>

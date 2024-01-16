@@ -81,8 +81,8 @@ export default function App() {
             {selectedMemo && (
               <MemoDetail
                 memo={selectedMemo}
-                onEditClick={handleEditMemo}
-                onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
+                onClickEdit={handleEditMemo}
+                onClickDelete={() => handleDeleteMemo(selectedMemo.id)}
               />
             )}
           </div>
