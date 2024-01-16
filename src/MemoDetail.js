@@ -21,7 +21,7 @@ export default function MemoDetail({ memo, onClickEdit, onClickDelete }) {
       ></textarea>
       <p></p>
       {isLoggedIn && (
-        <div>
+        <>
           <button
             className="custom-button"
             onClick={() => onClickEdit({ ...memo, text })}
@@ -31,7 +31,7 @@ export default function MemoDetail({ memo, onClickEdit, onClickDelete }) {
           <button className="custom-button" onClick={onClickDelete}>
             削除
           </button>
-        </div>
+        </>
       )}
     </div>
   );
