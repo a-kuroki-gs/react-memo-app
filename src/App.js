@@ -16,8 +16,8 @@ export default function App() {
     setIsLoggedIn((prevState) => !prevState);
   };
 
-  function saveToLocalStorage(data) {
-    localStorage.setItem("memos", JSON.stringify(data));
+  function saveToLocalStorage(memos) {
+    localStorage.setItem("memos", JSON.stringify(memos));
   }
 
   useEffect(() => {
@@ -29,8 +29,10 @@ export default function App() {
   }
 
   function handleNewMemo() {
+    const maxId = Math.max(...memos.map((memo) => memo.id), 0);
+
     const newMemo = {
-      id: memos.length + 1,
+      id: maxId + 1,
       text: "新規メモ",
     };
 
