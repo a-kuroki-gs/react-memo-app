@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import { LoginContext } from "./LoginContext";
+import React, { useState, useEffect } from "react";
 import "./MemoDetail.css";
 
-export default function MemoDetail({ memo, onClickEdit, onClickDelete }) {
+export default function MemoDetail({
+  memo,
+  onClickEdit,
+  onClickDelete,
+  isLoggedIn,
+}) {
   const [text, setText] = useState(memo.text);
-  const isLoggedIn = useContext(LoginContext);
 
   useEffect(() => {
     setText(memo.text);
