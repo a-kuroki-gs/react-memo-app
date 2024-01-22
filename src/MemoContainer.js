@@ -29,7 +29,6 @@ export default function MemoContainer({
             memo={selectedMemo}
             onClickEdit={handleEditMemo}
             onClickDelete={() => handleDeleteMemo(selectedMemo.id)}
-            isLoggedIn={isLoggedIn}
           />
         )}
       </div>
