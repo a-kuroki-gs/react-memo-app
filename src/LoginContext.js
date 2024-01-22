@@ -1,13 +1,18 @@
-import { createContext, useState } from "react";
+import React, { createContext } from "react";
 
-export const LoginContext = createContext();
+export const LoginStatusContext = createContext();
+export const LoginClickContext = createContext();
 
-export function useLoginStatus() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+export function LoginProviders({ children, isLoggedIn, setIsLoggedIn }) {
   const handleLoginClick = () => {
     setIsLoggedIn((prevState) => !prevState);
   };
 
-  return { isLoggedIn, handleLoginClick };
+  return (
+    <LoginStatusContext.Provider value={isLoggedIn}>
+      <LoginClickContext.Provider value={handleLoginClick}>
+        {children}
+      </LoginClickContext.Provider>
+    </LoginStatusContext.Provider>
+  );
 }

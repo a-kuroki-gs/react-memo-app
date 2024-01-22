@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import MemoContainer from "./MemoContainer";
 import LoginButton from "./LoginButton";
-import { useLoginStatus } from "./LoginContext";
+import { LoginProviders } from "./LoginContext";
 
 export default function App() {
-  const { isLoggedIn, handleLoginClick } = useLoginStatus();
+  const [isLoggedIn, setIsLoggedIn] = useState();
 
   const [memos, setMemos] = useState(() => {
     const storedMemos = localStorage.getItem("memos");
@@ -57,16 +57,12 @@ export default function App() {
   }
 
   return (
-    <div>
+    <LoginProviders isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
       <div className="header">
         <h1>メモアプリ</h1>
-        <LoginButton
-          isLoggedIn={isLoggedIn}
-          handleLoginClick={handleLoginClick}
-        ></LoginButton>
+        <LoginButton></LoginButton>
       </div>
       <MemoContainer
-        isLoggedIn={isLoggedIn}
         memos={memos}
         handleMemoClick={handleMemoClick}
         handleNewMemo={handleNewMemo}
@@ -74,6 +70,6 @@ export default function App() {
         handleDeleteMemo={handleDeleteMemo}
         selectedMemo={selectedMemo}
       ></MemoContainer>
-    </div>
+    </LoginProviders>
   );
 }
