@@ -1,5 +1,4 @@
 import React from "react";
-import "./MemoList.css";
 
 export default function MemoList({ memos, onMemoClick }) {
   return (
