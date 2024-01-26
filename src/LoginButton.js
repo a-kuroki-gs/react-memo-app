@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { LoginStatusContext, LoginClickContext } from "./LoginContext";
+import { AuthContext } from "./AuthContext";
 
 export default function LoginButton() {
-  const isLoggedIn = useContext(LoginStatusContext);
-  const handleLoginClick = useContext(LoginClickContext);
+  const { isLoggedIn, handleLoginClick } = useContext(AuthContext);
 
   return (
     <button className="login-button" onClick={handleLoginClick}>

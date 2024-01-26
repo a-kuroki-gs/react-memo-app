@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import MemoList from "./MemoList";
 import MemoDetail from "./MemoDetail";
-import { LoginStatusContext } from "./LoginContext";
+import { AuthContext } from "./AuthContext";
 
 export default function MemoContainer({
   memos,
@@ -11,7 +11,7 @@ export default function MemoContainer({
   handleDeleteMemo,
   selectedMemo,
 }) {
-  const isLoggedIn = useContext(LoginStatusContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div className="container">

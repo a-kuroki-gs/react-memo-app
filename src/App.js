@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import MemoContainer from "./MemoContainer";
 import LoginButton from "./LoginButton";
-import { LoginProviders } from "./LoginContext";
+import { AuthProvider } from "./AuthContext";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState();
@@ -57,7 +57,7 @@ export default function App() {
   }
 
   return (
-    <LoginProviders isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
+    <AuthProvider isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
       <div className="header">
         <h1>メモアプリ</h1>
         <LoginButton></LoginButton>
@@ -70,6 +70,6 @@ export default function App() {
         handleDeleteMemo={handleDeleteMemo}
         selectedMemo={selectedMemo}
       ></MemoContainer>
-    </LoginProviders>
+    </AuthProvider>
   );
 }
