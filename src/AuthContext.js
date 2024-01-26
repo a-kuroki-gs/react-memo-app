@@ -1,8 +1,10 @@
-import React, { createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export const AuthContext = createContext();
 
-export function AuthProvider({ children, isLoggedIn, setIsLoggedIn }) {
+export function AuthProvider({ children }) {
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
   const handleLoginClick = () => {
     setIsLoggedIn((prevState) => !prevState);
   };
@@ -15,4 +17,8 @@ export function AuthProvider({ children, isLoggedIn, setIsLoggedIn }) {
   return (
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
   );
+}
+
+export function useAuth() {
+  return useContext(AuthContext);
 }

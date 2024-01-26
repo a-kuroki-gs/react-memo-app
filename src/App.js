@@ -5,8 +5,6 @@ import LoginButton from "./LoginButton";
 import { AuthProvider } from "./AuthContext";
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState();
-
   const [memos, setMemos] = useState(() => {
     const storedMemos = localStorage.getItem("memos");
     return storedMemos ? JSON.parse(storedMemos) : [];
@@ -57,7 +55,7 @@ export default function App() {
   }
 
   return (
-    <AuthProvider isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
+    <AuthProvider>
       <div className="header">
         <h1>メモアプリ</h1>
         <LoginButton></LoginButton>
