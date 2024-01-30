@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MemoList from "./MemoList";
-import MemoDetail from "./MemoDetail";
 import "./App.css";
+import MemoContainer from "./MemoContainer";
+import LoginButton from "./LoginButton";
+import { AuthProvider } from "./AuthContext";
 
 export default function App() {
   const [memos, setMemos] = useState(() => {
@@ -54,25 +55,19 @@ export default function App() {
   }
 
   return (
-    <div>
-      <h1>メモアプリ</h1>
-      <div className="container">
-        <div className="memo-list">
-          <MemoList memos={memos} onMemoClick={handleMemoClick} />
-          <button className="plus-button" onClick={handleNewMemo}>
-            +
-          </button>
-        </div>
-        <div className="memo-detail">
-          {selectedMemo && (
-            <MemoDetail
-              memo={selectedMemo}
-              onEditClick={handleEditMemo}
-              onDeleteClick={() => handleDeleteMemo(selectedMemo.id)}
-            />
-          )}
-        </div>
+    <AuthProvider>
+      <div className="header">
+        <h1>メモアプリ</h1>
+        <LoginButton />
       </div>
-    </div>
+      <MemoContainer
+        memos={memos}
+        handleMemoClick={handleMemoClick}
+        handleNewMemo={handleNewMemo}
+        handleEditMemo={handleEditMemo}
+        handleDeleteMemo={handleDeleteMemo}
+        selectedMemo={selectedMemo}
+      ></MemoContainer>
+    </AuthProvider>
   );
 }

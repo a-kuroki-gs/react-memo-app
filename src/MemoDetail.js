@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./MemoDetail.css";
+import { useAuth } from "./AuthContext";
 
-export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
+export default function MemoDetail({ memo, onClickEdit, onClickDelete }) {
   const [text, setText] = useState(memo.text);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     setText(memo.text);
@@ -18,15 +19,19 @@ export default function MemoDetail({ memo, onEditClick, onDeleteClick }) {
         onChange={(e) => setText(e.target.value)}
       ></textarea>
       <p></p>
-      <button
-        className="custom-button"
-        onClick={() => onEditClick({ ...memo, text })}
-      >
-        編集
-      </button>
-      <button className="custom-button" onClick={onDeleteClick}>
-        削除
-      </button>
+      {isLoggedIn && (
+        <>
+          <button
+            className="custom-button"
+            onClick={() => onClickEdit({ ...memo, text })}
+          >
+            編集
+          </button>
+          <button className="custom-button" onClick={onClickDelete}>
+            削除
+          </button>
+        </>
+      )}
     </div>
   );
 }
