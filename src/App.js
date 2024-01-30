@@ -58,7 +58,7 @@ export default function App() {
     <AuthProvider>
       <div className="header">
         <h1>メモアプリ</h1>
-        <LoginButton></LoginButton>
+        <LoginButton />
       </div>
       <MemoContainer
         memos={memos}
